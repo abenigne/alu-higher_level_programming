@@ -1,0 +1,4 @@
+#!/bin/bash
+#!/user/bin/python3
+python3 $PYFILE
+
