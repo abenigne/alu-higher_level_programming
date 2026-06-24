@@ -1,2 +1,7 @@
-# alu-higher_level_programming
-Python projects(2nd trimester)
+# ALU Higher Level Programming
+
+This repository contains projects for higher level programming at ALU, including Python and other languages.
+
+## Author
+abenigne
+
