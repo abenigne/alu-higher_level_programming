@@ -1,7 +1,15 @@
 # ALU Higher Level Programming
 
-This repository contains projects for higher level programming at ALU, including Python and other languages.
+This repository contains Python projects for ALU Higher Level Programming.
 
-## Author
-abenigne
+## Projects
 
+### python-import_modules
+This project covers Python modules, imports, and command line arguments.
+
+- **0-add.py**: Imports and uses the add function from add_0.py
+- **1-calculation.py**: Imports and uses basic math functions from calculator_1.py
+- **2-args.py**: Prints the number and list of command line arguments
+- **3-infinite_add.py**: Prints the sum of all command line arguments
+- **4-hidden_discovery.py**: Prints all names defined in a compiled module
+- **5-variable_load.py**: Imports and prints a variable from another file
