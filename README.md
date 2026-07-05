@@ -1,15 +1,13 @@
-# ALU Higher Level Programming
+# Python - Data Structures: Lists, Tuples
 
-This repository contains Python projects for ALU Higher Level Programming.
+## Description
+This project covers Python's core sequence data structures: lists, tuples,
+and strings. It includes exercises on list manipulation (indexing, slicing,
+copying, deleting), tuple packing/unpacking, list comprehensions, and safe
+element access without relying on try/except.
 
-## Projects
-
-### python-import_modules
-This project covers Python modules, imports, and command line arguments.
-
-- **0-add.py**: Imports and uses the add function from add_0.py
-- **1-calculation.py**: Imports and uses basic math functions from calculator_1.py
-- **2-args.py**: Prints the number and list of command line arguments
-- **3-infinite_add.py**: Prints the sum of all command line arguments
-- **4-hidden_discovery.py**: Prints all names defined in a compiled module
-- **5-variable_load.py**: Imports and prints a variable from another file
+## Requirements
+- Ubuntu 20.04 LTS, Python 3.8.5
+- pycodestyle 2.7.*
+- Every file starts with #!/usr/bin/python3, ends with a newline, and is
+  executable
