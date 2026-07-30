@@ -27,7 +27,9 @@ class Student:
         Returns:
             dict: The (optionally filtered) attributes of the Student.
         """
-        if isinstance(attrs, list) and all(isinstance(a, str)
-                                            for a in attrs):
-            return {k: v for k, v in self.__dict__.items() if k in attrs}
+        if isinstance(attrs, list):
+            valid = all(isinstance(a, str) for a in attrs)
+            if valid:
+                return {k: v for k, v in self.__dict__.items()
+                        if k in attrs}
         return self.__dict__
