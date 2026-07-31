@@ -1,18 +1,92 @@
 The ``1-my_list`` module
 =========================
 
-Using ``MyList``
------------------
->>> MyList = __import__('1-my_list').MyList
->>> my_list = MyList()
->>> my_list.append(1)
->>> my_list.append(4)
->>> my_list.append(2)
->>> my_list.append(3)
->>> my_list.append(5)
->>> print(my_list)
-[1, 4, 2, 3, 5]
->>> my_list.print_sorted()
-[1, 2, 3, 4, 5]
->>> print(my_list)
-[1, 4, 2, 3, 5]
+Importing the class
+--------------------
+    >>> MyList = __import__('1-my_list').MyList
+
+Basic usage
+------------
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+Empty list
+-----------
+    >>> empty = MyList()
+    >>> empty.print_sorted()
+    []
+
+Single element
+----------------
+    >>> single = MyList()
+    >>> single.append(42)
+    >>> single.print_sorted()
+    [42]
+
+Already sorted list
+----------------------
+    >>> sorted_list = MyList()
+    >>> sorted_list.append(1)
+    >>> sorted_list.append(2)
+    >>> sorted_list.append(3)
+    >>> sorted_list.print_sorted()
+    [1, 2, 3]
+    >>> print(sorted_list)
+    [1, 2, 3]
+
+Reverse sorted list
+-----------------------
+    >>> rev_list = MyList()
+    >>> rev_list.append(5)
+    >>> rev_list.append(3)
+    >>> rev_list.append(1)
+    >>> rev_list.print_sorted()
+    [1, 3, 5]
+    >>> print(rev_list)
+    [5, 3, 1]
+
+Negative numbers
+-------------------
+    >>> neg_list = MyList()
+    >>> neg_list.append(-1)
+    >>> neg_list.append(-5)
+    >>> neg_list.append(3)
+    >>> neg_list.print_sorted()
+    [-5, -1, 3]
+
+Duplicate values
+-------------------
+    >>> dup_list = MyList()
+    >>> dup_list.append(2)
+    >>> dup_list.append(2)
+    >>> dup_list.append(1)
+    >>> dup_list.print_sorted()
+    [1, 2, 2]
+
+Still behaves like a list
+---------------------------
+    >>> isinstance(my_list, list)
+    True
+    >>> len(my_list)
+    5
+    >>> my_list[0]
+    1
+    >>> type(my_list).__name__
+    'MyList'
+
+Return value of print_sorted
+-------------------------------
+    >>> result = my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(result)
+    None

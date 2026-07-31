@@ -1,21 +1,21 @@
 #!/usr/bin/python3
-"""Module that defines a Square class with a custom string repr."""
+"""Defines a Square class with a custom string representation."""
 Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    """Class that represents a square, inheriting from Rectangle."""
+    """Represent a square, validated against BaseGeometry rules."""
 
     def __init__(self, size):
         """Initialize a new Square.
 
         Args:
-            size (int): the size of the square.
+            size (int): The size (width and height) of the new square.
         """
         self.integer_validator("size", size)
         super().__init__(size, size)
+        self.__size = size
 
     def __str__(self):
-        """Return the string representation of the square."""
-        return "[Square] {}/{}".format(self._Rectangle__width,
-                                        self._Rectangle__height)
+        """Return the printable representation of the Square."""
+        return "[Square] {}/{}".format(self.__size, self.__size)
