@@ -79,3 +79,15 @@ Boolean is rejected as non-integer (type(True) is bool, not int)
     >>> bg.integer_validator("age", True)
     Traceback (most recent call last):
     TypeError: age must be an integer
+
+Set value is rejected as non-integer
+----------------------------------------
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+None value is rejected as non-integer
+-------------------------------------------
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+    TypeError: age must be an integer
