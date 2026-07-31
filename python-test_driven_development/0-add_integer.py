@@ -17,13 +17,19 @@ def add_integer(a, b=98):
         int: the sum of a and b, cast to integers.
 
     Raises:
-        TypeError: if a or b is not an int or float.
+        TypeError: if a or b is not an int or float, or if either
+            cannot be converted to an integer (e.g. NaN, infinity).
     """
-    if type(a) not in (int, float):
+    if type(a) not in (int, float) or isinstance(a, bool):
         raise TypeError("a must be an integer")
-    if type(b) not in (int, float):
+    if type(b) not in (int, float) or isinstance(b, bool):
         raise TypeError("b must be an integer")
-    if isinstance(a, bool) or isinstance(b, bool):
-        raise TypeError("a must be an integer") if isinstance(a, bool) \
-            else TypeError("b must be an integer")
-    return int(a) + int(b)
+    try:
+        a = int(a)
+    except (ValueError, OverflowError):
+        raise TypeError("a must be an integer")
+    try:
+        b = int(b)
+    except (ValueError, OverflowError):
+        raise TypeError("b must be an integer")
+    return a + b

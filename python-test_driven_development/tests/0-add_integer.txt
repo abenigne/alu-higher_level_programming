@@ -35,3 +35,31 @@ TypeError: a must be an integer
 >>> add_integer(1, None)
 Traceback (most recent call last):
 TypeError: b must be an integer
+
+>>> add_integer(float('inf'))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(1, float('inf'))
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add_integer(float('-inf'))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(float('nan'))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(1, float('nan'))
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add_integer(True)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer(1, False)
+Traceback (most recent call last):
+TypeError: b must be an integer
