@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Module that fetches the ALU intranet status endpoint using urllib."""
+"""Module that fetches the intranet status endpoint using urllib."""
 import urllib.request
 
 
 if __name__ == "__main__":
-    with urllib.request.urlopen("https://alu-intranet.hbtn.io/status") as r:
+    with urllib.request.urlopen("https://intranet.hbtn.io/status") as r:
         body = r.read()
         print("Body response:")
         print("\t- type: {}".format(type(body)))
