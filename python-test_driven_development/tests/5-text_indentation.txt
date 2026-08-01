@@ -6,17 +6,23 @@ Importing the function:
     >>> text_indentation = __import__('5-text_indentation').text_indentation
 
 Basic text formatting:
-    >>> text_indentation("Hello. How are you? I am fine: thanks.")
-    Hello.
+    >>> text_indentation("Holberton. School? How are you: John")
+    Holberton.
     <BLANKLINE>
-    How are you?
+    School?
     <BLANKLINE>
-    I am fine:
+    How are you:
     <BLANKLINE>
-    thanks.
+    John
 
 Invalid non-string input:
-    >>> text_indentation(12345)
+    >>> text_indentation(12)
     Traceback (most recent call last):
     ...
     TypeError: text must be a string
+
+Missing required argument:
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
