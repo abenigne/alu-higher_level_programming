@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unit tests for the Square class."""
 import io
+import os
 import sys
 import unittest
 from models.base import Base
@@ -48,6 +49,22 @@ class TestSquare_instantiation(unittest.TestCase):
     def test_size_negative(self):
         with self.assertRaises(ValueError):
             Square(-5)
+
+    def test_x_type(self):
+        with self.assertRaises(TypeError):
+            Square(1, "2")
+
+    def test_y_type(self):
+        with self.assertRaises(TypeError):
+            Square(1, 2, "3")
+
+    def test_x_negative(self):
+        with self.assertRaises(ValueError):
+            Square(1, -2)
+
+    def test_y_negative(self):
+        with self.assertRaises(ValueError):
+            Square(1, 2, -3)
 
 
 class TestSquare_size(unittest.TestCase):
@@ -130,6 +147,26 @@ class TestSquare_update_kwargs(unittest.TestCase):
         s = Square(10, 10, 10, 1)
         s.update(size=5)
         self.assertEqual(s.size, 5)
+
+
+class TestSquare_save_to_file(unittest.TestCase):
+    """Unit tests for testing save_to_file method of the Square class."""
+
+    def tearDown(self):
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+
+    def test_save_to_file_none(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_empty_list(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
 
 
 class TestSquare_to_dictionary(unittest.TestCase):
