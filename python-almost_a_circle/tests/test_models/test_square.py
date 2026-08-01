@@ -2,6 +2,7 @@
 """
 Unittest module for testing the Square class.
 """
+import os
 import unittest
 from models.base import Base
 from models.square import Square
@@ -17,6 +18,13 @@ class TestSquare(unittest.TestCase):
         Resets the __nb_objects counter before each test.
         """
         Base._Base__nb_objects = 0
+
+    def tearDown(self):
+        """
+        Cleans up created files after tests run.
+        """
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
 
     def test_square_creation(self):
         """
@@ -69,6 +77,31 @@ class TestSquare(unittest.TestCase):
         d = s.to_dictionary()
         expected = {'id': 1, 'size': 10, 'x': 2, 'y': 1}
         self.assertEqual(d, expected)
+
+    def test_save_to_file_none(self):
+        """
+        Tests save_to_file with None.
+        """
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_empty(self):
+        """
+        Tests save_to_file with an empty list.
+        """
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_valid(self):
+        """
+        Tests save_to_file with valid list of Square instances.
+        """
+        s = Square(1, 0, 0, 1)
+        Square.save_to_file([s])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), '[{"id": 1, "size": 1, "x": 0, "y": 0}]')
 
 
 if __name__ == "__main__":
