@@ -1,3 +1,3 @@
 #!/bin/bash
-# sends a GET request to the URL, follows redirects, and displays the body only if the final status code is 200
-curl -s -L -o /tmp/body_$$ -w "%{http_code}" "$1" | grep -q 200 && cat /tmp/body_$$; rm -f /tmp/body_$$
+# Sends a GET request to the URL passed as argument and displays the body only if the response status code is 200
+code=$(curl -s -o /tmp/1-body_output -w "%{http_code}" "$1"); [ "$code" = "200" ] && cat /tmp/1-body_output

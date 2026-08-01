@@ -1,3 +1,3 @@
 #!/bin/bash
-# sends an OPTIONS request to the URL passed as argument and displays the allowed HTTP methods
-curl -s -X OPTIONS "$1" -I | grep -i "allow" | cut -d " " -f2-
+# Sends an OPTIONS request to the URL passed as argument and displays all HTTP methods the server accepts
+curl -s -X OPTIONS -I "$1" | grep -i "^Allow:" | cut -d ':' -f2- | tr -d '\r' | sed 's/^ *//'
