@@ -1,33 +1,25 @@
 #!/usr/bin/python3
-"""This module defines the Square class, which inherits from Rectangle."""
+"""Defines the Square class, which inherits from Rectangle."""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Square class that inherits from Rectangle.
-
-    A square is a special rectangle where width and height are equal.
-    """
+    """Represent a square, inheriting from Rectangle."""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """Initialize a new Square instance.
+        """Initialize a new Square.
 
         Args:
-            size (int): The size (width and height) of the square.
-            x (int): The x coordinate of the square.
-            y (int): The y coordinate of the square.
-            id (int): The identity of the square.
+            size (int): The size of the new Square.
+            x (int): The x coordinate of the new Square.
+            y (int): The y coordinate of the new Square.
+            id (int): The identity of the new Square.
         """
         super().__init__(size, size, x, y, id)
 
-    def __str__(self):
-        """Return the string representation of the square."""
-        return "[Square] ({}) {}/{} - {}".format(
-            self.id, self.x, self.y, self.width)
-
     @property
     def size(self):
-        """int: The size of the square (its width and height)."""
+        """Get/set the size of the Square."""
         return self.width
 
     @size.setter
@@ -35,24 +27,29 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def __str__(self):
+        """Return the printable string representation of the Square."""
+        return "[Square] ({}) {}/{} - {}".format(
+            self.id, self.x, self.y, self.width)
+
     def update(self, *args, **kwargs):
-        """Update attributes via no-keyword or keyword arguments.
+        """Update the Square via args (ordered) or kwargs (named).
 
         Args:
-            *args: New attribute values in order: id, size, x, y.
-            **kwargs: New attribute values by key/value pair. Skipped
-                if args is not empty.
+            *args (ints): New attribute values in the order:
+                id, size, x, y.
+            **kwargs (dict): New key/value pairs of attributes.
         """
-        if args and len(args) > 0:
+        if args and len(args) != 0:
             attrs = ["id", "size", "x", "y"]
             for attr, value in zip(attrs, args):
                 setattr(self, attr, value)
-        else:
+        elif kwargs and len(kwargs) != 0:
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
     def to_dictionary(self):
-        """Return the dictionary representation of the square."""
+        """Return the dictionary representation of the Square."""
         return {
             "id": self.id,
             "size": self.size,
