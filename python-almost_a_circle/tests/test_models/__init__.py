@@ -1,3 +1,2 @@
-"""
-Initialize the test_models subpackage.
-"""
+#!/usr/bin/python3
+"""Package initializer."""

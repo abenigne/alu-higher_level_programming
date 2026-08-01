@@ -1,1 +1,2 @@
-"""Initialization module for models package."""
+#!/usr/bin/python3
+"""Package initializer."""

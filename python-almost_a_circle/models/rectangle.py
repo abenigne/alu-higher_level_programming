@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-"""This module defines the Rectangle class, which inherits from Base."""
+"""Defines the Rectangle class, which inherits from Base."""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """Rectangle class that inherits from Base.
-
-    Represents a rectangle with a width, height, and x/y position,
-    with full attribute validation.
-    """
+    """Represent a rectangle, inheriting id management from Base."""
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initialize a new Rectangle instance.
@@ -28,12 +24,12 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """int: The width of the Rectangle."""
+        """Get/set the width of the Rectangle."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
@@ -41,12 +37,12 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """int: The height of the Rectangle."""
+        """Get/set the height of the Rectangle."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value <= 0:
             raise ValueError("height must be > 0")
@@ -54,12 +50,12 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """int: The x coordinate of the Rectangle."""
+        """Get/set the x coordinate of the Rectangle."""
         return self.__x
 
     @x.setter
     def x(self, value):
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("x must be an integer")
         if value < 0:
             raise ValueError("x must be >= 0")
@@ -67,12 +63,12 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        """int: The y coordinate of the Rectangle."""
+        """Get/set the y coordinate of the Rectangle."""
         return self.__y
 
     @y.setter
     def y(self, value):
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
@@ -83,7 +79,10 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """Print the Rectangle instance to stdout using the # char."""
+        """Print the Rectangle to stdout using the `#` character.
+
+        Respects `x` (horizontal offset) and `y` (vertical offset).
+        """
         print("\n" * self.y, end="")
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
@@ -94,15 +93,15 @@ class Rectangle(Base):
             self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
-        """Update attributes via no-keyword or keyword arguments.
+        """Update attributes via a list of arguments or keyword arguments.
 
         Args:
-            *args: New attribute values in the order id, width,
-                height, x, y.
-            **kwargs: New attribute values as key/value pairs. Ignored
-                if args is not empty.
+            *args (ints): New attribute values in the order:
+                id, width, height, x, y.
+            **kwargs (dict): New key/value pairs of attributes. Ignored
+                if `args` is not empty.
         """
-        if args and len(args) > 0:
+        if args:
             attrs = ["id", "width", "height", "x", "y"]
             for attr, value in zip(attrs, args):
                 setattr(self, attr, value)
