@@ -1,24 +1,15 @@
 #!/usr/bin/python3
-"""Module that defines a function to print a square.
-
-This module provides print_square, which prints a square made
-of the '#' character with the given side length.
-"""
+"""Module that prints a square."""
 
 
 def print_square(size):
-    """Print a square of '#' characters of the given size.
+    """Print a square using #."""
 
-    Args:
-        size (int): the side length of the square.
-
-    Raises:
-        TypeError: if size is not an integer.
-        ValueError: if size is a negative integer.
-    """
-    if type(size) is not int:
+    if not isinstance(size, int):
         raise TypeError("size must be an integer")
+
     if size < 0:
         raise ValueError("size must be >= 0")
+
     for i in range(size):
         print("#" * size)
