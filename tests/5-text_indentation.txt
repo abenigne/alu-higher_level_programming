@@ -1,0 +1,22 @@
+======================================
+How to Use 5-text_indentation.py
+======================================
+
+Importing the function:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Basic text formatting:
+    >>> text_indentation("Hello. How are you? I am fine: thanks.")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    I am fine:
+    <BLANKLINE>
+    thanks.
+
+Invalid non-string input:
+    >>> text_indentation(12345)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
