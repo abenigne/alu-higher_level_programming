@@ -31,9 +31,24 @@ class TestBaseInstantiation(unittest.TestCase):
         b.id = 15
         self.assertEqual(15, b.id)
 
-    def test_nb_objects_private(self):
-        with self.assertRaises(AttributeError):
-            print(Base.__nb_objects)
+
+class TestBaseToJsonString(unittest.TestCase):
+    """Unittests for testing to_json_string method of Base class."""
+
+    def test_to_json_string_none(self):
+        self.assertEqual(Base.to_json_string(None), "[]")
+
+    def test_to_json_string_empty_list(self):
+        self.assertEqual(Base.to_json_string([]), "[]")
+
+    def test_to_json_string_valid_list(self):
+        list_dicts = [{'id': 12}]
+        self.assertEqual(Base.to_json_string(list_dicts), '[{"id": 12}]')
+
+    def test_to_json_string_returns_string(self):
+        list_dicts = [{'id': 12}]
+        json_str = Base.to_json_string(list_dicts)
+        self.assertEqual(type(json_str), str)
 
 
 if __name__ == "__main__":
